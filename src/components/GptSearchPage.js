@@ -1,6 +1,7 @@
 import React from 'react'
 import { BG_URL } from '../utils/constants'
 import GptSearchBar from './GptSearchBar'
+import GptMovieSuggestion from './GptMovieSuggestion'
 
 const GptSearchPage = () => {
   return (
@@ -9,7 +10,10 @@ const GptSearchPage = () => {
         {/*----------------- Background Image -----------------*/}
         <img className="md:h-[600px] sm:h-[600px] h-screen lg:h-[800px] w-full object-cover" src={BG_URL} alt="background-Img"></img>
       </div>
+
+      
       <GptSearchBar/>
+      <GptMovieSuggestion/>
     </div>
   )
 }

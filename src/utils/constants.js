@@ -26,3 +26,5 @@ export const SUPPORTED_LANGUAGES = [
   { identifier: "hindi", name: "hindi" },
   { identifier: "marathi", name: "marathi" },
 ];
+
+export const BARD_KEY="AIzaSyBcW-ueM8asZJRrNSDpdMSqDkA99FGKRis"
