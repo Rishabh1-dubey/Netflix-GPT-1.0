@@ -2,6 +2,7 @@ import React from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Login from "./Login";
 import Browser from "./Browser";
+import CardInfo from "./CardInfo";
 
 const Body = () => {
   const appRouter = createBrowserRouter([
@@ -12,6 +13,10 @@ const Body = () => {
     {
       path: "/browser",
       element: <Browser />,
+    },
+    {
+      path: "/cardinfo/:id",
+      element: <CardInfo />,
     },
   ]);
   return (
