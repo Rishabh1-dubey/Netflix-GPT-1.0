@@ -27,4 +27,4 @@ export const SUPPORTED_LANGUAGES = [
   { identifier: "marathi", name: "marathi" },
 ];
 
-export const BARD_KEY="AIzaSyBcW-ueM8asZJRrNSDpdMSqDkA99FGKRis"
+export const BARD_KEY=process.env.REACT_APP_BARD_KEY
