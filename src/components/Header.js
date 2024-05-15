@@ -15,7 +15,7 @@ const Header = () => {
   const navigate = useNavigate();
   const user = useSelector((store) => store.user);
   const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
-  // const langKey = useSelector((store) => store.config.lang);
+  const langKey = useSelector((store) => store.config.lang);
   const handleSignout = () => {
     signOut(auth)
       .then(() => {})
@@ -28,12 +28,12 @@ const Header = () => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        const { uid, email, displayname, photoURL } = user;
+        const { uid, email, displayName, photoURL } = user;
         dispatch(
           addUser({
             uid: uid,
             email: email,
-            displayname: displayname,
+            displayname: displayName,
             photoURL: photoURL,
           })) 
           if (window.location.pathname === "/") {
@@ -64,7 +64,10 @@ const Header = () => {
       <img className="w-44 mx-auto md:mx-0" src={items} alt="Netflix logo" />
       {user && (
         <div className="flex p-2 justify-between">
-          
+           <span className="text-white pt-4 pr-2 font-normal text-xs md:font-semibold md:text-lg lg:font-semibold lg:text-lg">
+              welcome ,
+              {user.displayname}
+            </span>
           {showGptSearch && (
             <select
               className="  p-2 m-2 bg-gray-700 text-white rounded-lg "
@@ -86,9 +89,9 @@ const Header = () => {
             onClick={handleGptSearchClick}
           >
             {/* Search Gpt */}
-            {showGptSearch ? "Home Page" : "Search GPT"}
+            {showGptSearch ? "Home Page 🏠" : "Search GPT 👀"}
           </button>
-
+         
           <img
             className=" hidden md:block h-[45px] w-[46px]"
             src={user?.photoURL}

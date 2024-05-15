@@ -6,6 +6,10 @@ const DataCss =
 const ValueCss =
   "text-white border border-red xl:px-4 md:px-4 sm:px-4  m-1 rounded-2xl bg-gray-500 ";
 const CardTopInfo = ({ info }) => {
+
+  // const playTrailer=()=>{
+
+  // }
   return (
     <div className="flex flex-row justify-between xl:pt-36 xl:px-28  px-3">
       <div className="xl:w-3.5/12 w-4/12">
@@ -22,7 +26,7 @@ const CardTopInfo = ({ info }) => {
           <span className="xl:text-5xl lg:text-5xl md:text-4xl sm:text-4xl text-lg font-extrabold text-white">
             {info?.title}
           </span>{" "}
-          <span className="xl:text-xl text-sm xl:pl-4 pl-2 font-normal text-red-700 ">
+          <span className="xl:text-xl text-sm xl:pl-4 pl-2 font-normal text-yellow-500 ">
             ({info?.release_date.slice(0, 4)})
           </span>
         </div>
@@ -41,7 +45,7 @@ const CardTopInfo = ({ info }) => {
               </span>
             ))}
           </div>
-          <div className="flex pl-2">
+          <div className="flex -pl-1">
             <span className={DataCss}>Runtime:</span>
             <span className={ValueCss}>
               {Math.floor(info?.runtime / 60)} hrs
@@ -49,6 +53,7 @@ const CardTopInfo = ({ info }) => {
             <span className="text-white font-bold ml-2 my-1">Popularity:</span>
             <span className={ValueCss}>🌟{info?.popularity}</span>
           </div>
+            <button className="border border-red-800 px-1 m-2  rounded-lg bg-gray-500 text-white font-semibold text-2xl h-12 hover:bg-green-400 hover:cursor-pointer">play trailer ▶️</button>
         </div>
         {/* tagline */}
         <div className="flex flex-row justify-center items-center py-0.5 lg:py-4 md:py-3 sm:py-2 xl:py-5">
