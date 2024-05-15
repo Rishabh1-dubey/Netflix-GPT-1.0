@@ -8,13 +8,14 @@ import { auth } from "../utils/firebase";
 import { toggleSearchView } from "../utils/gptSlice";
 import { SUPPORTED_LANGUAGES } from "../utils/constants";
 import { changeLanguage } from "../utils/configSlice";
+import lang from "../utils/languageConstants";
 
 const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector((store) => store.user);
   const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
-
+  // const langKey = useSelector((store) => store.config.lang);
   const handleSignout = () => {
     signOut(auth)
       .then(() => {})
@@ -34,9 +35,12 @@ const Header = () => {
             email: email,
             displayname: displayname,
             photoURL: photoURL,
-          })
-        );
-        navigate("/browser");
+          })) 
+          if (window.location.pathname === "/") {
+            navigate("/browser");
+          }
+        
+      
       } else {
         dispatch(removeUser());
         navigate("/");
@@ -51,32 +55,32 @@ const Header = () => {
     dispatch(toggleSearchView());
   };
 
-
-const handleLanguageChange =(e)=>{
-  dispatch(changeLanguage(e.target.value));
-}
+  const handleLanguageChange = (e) => {
+    dispatch(changeLanguage(e.target.value));
+  };
 
   return (
     <div className="absolute  w-screen px-8 py-2 bg-gradient-to-b from-black  z-50 flex justify-between ">
       <img className="w-44 mx-auto md:mx-0" src={items} alt="Netflix logo" />
       {user && (
         <div className="flex p-2 justify-between">
-          {showGptSearch &&(
-          <select
-            className="  p-2 m-2 bg-gray-700 text-white rounded-lg "
-            onChange={handleLanguageChange}
-          >
-            {SUPPORTED_LANGUAGES.map((lang) => (
-              <option
-                className="pt-5"
-                key={lang.identifier}
-                value={lang.identifier}
-              >
-                {lang.name}
-              </option>
-            ))}
-          </select>
-        )}
+          
+          {showGptSearch && (
+            <select
+              className="  p-2 m-2 bg-gray-700 text-white rounded-lg "
+              onChange={handleLanguageChange}
+            >
+              {SUPPORTED_LANGUAGES.map((lang) => (
+                <option
+                  className="pt-5"
+                  key={lang.identifier}
+                  value={lang.identifier}
+                >
+                  {lang.name}
+                </option>
+              ))}
+            </select>
+          )}
           <button
             className="py-2 px-4 mx-4  my-2 cursor-pointer text-white bg-yellow-500 rounded-md"
             onClick={handleGptSearchClick}
